@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================================
+   HAC GROUP — Global Styles
+   Institutional, sober, premium
+   ================================================ */
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-brand-navy-deep;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(0, 168, 150, 0.15);
+    color: #0F2137;
+  }
+}
+
+@layer components {
+  /* — Container — */
+  .container-hac {
+    @apply w-full max-w-[1280px] mx-auto px-6 md:px-10 lg:px-16;
+  }
+
+  /* — Section spacing — */
+  .section-spacing {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* — Separator line — */
+  .separator {
+    @apply w-full h-px bg-brand-gray-line;
+  }
+
+  .separator-short {
+    @apply w-24 h-px bg-brand-teal;
+  }
+
+  /* — Image container with overlay — */
+  .image-cover {
+    @apply relative w-full h-full overflow-hidden;
+  }
+
+  .image-cover img {
+    @apply w-full h-full object-cover;
+  }
+
+  .image-overlay {
+    @apply absolute inset-0 bg-brand-navy-deep/40;
+  }
+
+  /* — Text styles — */
+  .text-overline {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-brand-teal;
+  }
+
+  .text-editorial {
+    @apply text-body-lg text-brand-navy/70 leading-relaxed max-w-2xl;
+  }
+
+  /* — Button primary — */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 
+           bg-brand-teal text-white text-sm font-medium tracking-wide
+           rounded-none
+           transition-all duration-500 ease-out
+           hover:bg-brand-teal-dark hover:shadow-lg hover:shadow-brand-teal/20
+           active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 
+           border border-brand-navy/20 text-brand-navy text-sm font-medium tracking-wide
+           rounded-none
+           transition-all duration-500 ease-out
+           hover:border-brand-teal hover:text-brand-teal
+           active:scale-[0.98];
+  }
+
+  /* — Image placeholder — */
+  .img-placeholder {
+    @apply relative w-full h-full flex items-center justify-center
+           bg-gradient-to-br from-brand-navy-deep/5 to-brand-teal/5
+           border border-dashed border-brand-gray-line;
+  }
+
+  .img-placeholder span {
+    @apply text-caption text-brand-gray-mid text-center px-4;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ================================================
+   Scrollbar
+   ================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F9FAFB;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
