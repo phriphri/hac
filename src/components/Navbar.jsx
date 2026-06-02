@@ -66,6 +66,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                prefetch={true}
                 className={`text-sm tracking-wide font-medium transition-all duration-300 hover:text-brand-teal relative after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:w-0 after:h-px after:bg-brand-teal hover:after:w-full after:transition-all after:duration-300 ${
                   pathname === link.href
                     ? 'text-brand-teal after:w-full'
@@ -115,6 +116,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    prefetch={true}
                     className={`text-2xl font-light tracking-wide transition-colors ${
                       pathname === link.href
                         ? 'text-brand-teal'

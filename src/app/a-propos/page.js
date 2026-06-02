@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowUpRight, ChevronRight, Target, Eye, Handshake, Lightbulb, ShieldCheck, Sprout, Database, Anchor, BarChart } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import SectionImage from '@/components/SectionImage';
+import Partners from '@/components/Partners';
 
 const valeurs = [
   { icon: Lightbulb, title: 'Innovation', text: 'Solutions technologiques de pointe pour moderniser les échanges commerciaux.' },
@@ -270,6 +271,8 @@ export default function AProposPage() {
           </AnimatedSection>
         </div>
       </section>
+
+      <Partners />
     </>
   );
 }

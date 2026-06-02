@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowUpRight, Truck, BarChart3, Leaf, Globe2, Building2, HeartPulse, GraduationCap } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import SectionImage from '@/components/SectionImage';
+import Partners from '@/components/Partners';
 
 const secteurs = [
   {
@@ -100,6 +101,8 @@ export default function SecteursPage() {
           </AnimatedSection>
         </div>
       </section>
+
+      <Partners />
     </>
   );
 }

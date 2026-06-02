@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Mail, Phone, Smartphone, Globe, ArrowUpRight, ChevronRight, Building2, Ship, FileText, Users } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import SectionImage from '@/components/SectionImage';
+import Partners from '@/components/Partners';
 
 export default function PartenairesPage() {
   return (
@@ -29,7 +30,7 @@ export default function PartenairesPage() {
           <AnimatedSection>
             <p className="text-overline mb-4">Représentation</p>
             <h2 className="text-heading-2 font-light text-brand-navy mb-12 max-w-2xl text-balance">
-              Représentation OGEFREM & FERI
+              Représentation OGEFREM/FERI
             </h2>
           </AnimatedSection>
 
@@ -37,8 +38,7 @@ export default function PartenairesPage() {
             <AnimatedSection delay={0.1} className="order-2 lg:order-1">
               <div className="space-y-4">
                 <p className="text-editorial">
-                  HAC Group intervient en tant que mandataire, sous-agent et représentant FERI dans le cadre 
-                  des opérations liées à l&apos;OGEFREM RAN (Représentation d&apos;Anvers).
+                  HAC Group intervient en tant que mandataire et sous‑agent de la Représentation OGEFREM RAN, aussi bien dans la zone Europe, au Moyen‑Orient que dans la région (Représentation d&apos;Anvers / Belgique).
                 </p>
                 <p className="text-editorial">
                   Notre expertise nous permet d&apos;assurer une gestion professionnelle et fiable des opérations 
@@ -249,6 +249,8 @@ export default function PartenairesPage() {
           </AnimatedSection>
         </div>
       </section>
+
+      <Partners />
     </>
   );
 }

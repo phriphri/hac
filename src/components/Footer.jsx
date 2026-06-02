@@ -6,7 +6,7 @@ const footerLinks = [
   { href: '/', label: 'Accueil' },
   { href: '/a-propos', label: 'À propos' },
   { href: '/secteurs', label: 'Secteurs' },
-  { href: '/strategie', label: 'Stratégie' },
+  { href: '/partenaires', label: 'Partenaires' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -60,10 +60,10 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-white/60">
               <li>
                 <a
-                  href="mailto:hac@hacgroupcongo.com"
+                  href="mailto:gloria.co@hacgcongo.com"
                   className="hover:text-brand-teal transition-colors duration-300"
                 >
-                  hac@hacgroupcongo.com
+                  gloria.co@hacgcongo.com
                 </a>
               </li>
               <li>104, Colonel Ebeya, Golf</li>
@@ -87,9 +87,6 @@ export default function Footer() {
         <div className="container-hac flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-white/40">
             © {new Date().getFullYear()} HAC Group. Tous droits réservés.
-          </p>
-          <p className="text-sm text-white/40">
-            by Phrasia Mosengo
           </p>
         </div>
       </div>

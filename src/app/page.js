@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowUpRight, ArrowRight, Anchor, Shield, BarChart3, Globe2, Cpu, Truck, Leaf, Building2, HeartPulse, GraduationCap } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import SectionImage from '@/components/SectionImage';
+import Partners from '@/components/Partners';
 
 /* ======================================================
    PAGE D'ACCUEIL — HAC GROUP
@@ -52,7 +53,7 @@ export default function HomePage() {
 
             <AnimatedSection delay={0.2}>
               <p className="text-base md:text-xl text-white/60 leading-relaxed max-w-2xl mb-6">
-                HAC Group développe des relations commerciales, technologiques et stratégiques
+                HAC Group Congo développe des relations commerciales, technologiques et stratégiques
                 entre le Canada, la République Démocratique du Congo et l&apos;Afrique.
               </p>
             </AnimatedSection>
@@ -60,7 +61,7 @@ export default function HomePage() {
             <AnimatedSection delay={0.3}>
               <div className="flex flex-col sm:flex-wrap gap-3 sm:gap-4">
                 <Link href="/a-propos" className="btn-primary w-full sm:w-auto justify-center">
-                  Découvrir HAC Group
+                  Découvrir HAC Group Congo
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
                 <Link href="/contact" className="btn-outline !border-white/20 !text-white hover:!border-brand-teal hover:!text-brand-teal w-full sm:w-auto justify-center">
@@ -89,8 +90,7 @@ export default function HomePage() {
               </h2>
               <div className="space-y-4">
                 <p className="text-editorial">
-                  African-Canadian Holding Group est une société constituée selon le droit canadien et
-                  membre actif de la prestigieuse chambre de commerce ACBC (African Canadian Business Chamber).
+                  HAC Group Congo, filiale de HAC Group, est enregistrée conformément au droit congolais et assure la représentation locale du groupe en République Démocratique du Congo.
                 </p>
                 <p className="text-editorial">
                   Notre mission est de jouer un rôle de pont stratégique entre ces deux continents,
@@ -315,6 +315,8 @@ export default function HomePage() {
           </AnimatedSection>
         </div>
       </section>
+
+      <Partners />
     </>
   );
 }

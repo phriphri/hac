@@ -23,6 +23,7 @@
   body {
     @apply bg-white text-brand-navy-deep;
     overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   ::selection {

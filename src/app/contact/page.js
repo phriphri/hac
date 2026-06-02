@@ -2,6 +2,7 @@
 
 import { Mail, MapPin, Phone, Smartphone, ArrowUpRight } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
+import Partners from '@/components/Partners';
 
 export default function ContactPage() {
   return (
@@ -36,8 +37,8 @@ export default function ContactPage() {
                     <Mail className="w-5 h-5 text-brand-teal shrink-0 mt-1" />
                     <div>
                       <p className="text-sm font-medium text-brand-navy mb-1">Email général</p>
-                      <a href="mailto:hac@hacgroupcongo.com" className="text-brand-navy/60 hover:text-brand-teal transition-colors">
-                        hac@hacgroupcongo.com
+                      <a href="mailto:gloria.co@hacgcongo.com" className="text-brand-navy/60 hover:text-brand-teal transition-colors">
+                        gloria.co@hacgcongo.com
                       </a>
                     </div>
                   </div>
@@ -78,7 +79,7 @@ export default function ContactPage() {
                       : 'Contact depuis le site web';
                     
                     const body = `Nom: ${firstName} ${lastName}\nEmail: ${email}\n\n${message}`;
-                    window.location.href = `mailto:hac@hacgroupcongo.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(body)}`;
+                    window.location.href = `mailto:gloria.co@hacgcongo.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(body)}`;
                   }}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
@@ -147,6 +148,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <Partners />
     </main>
   );
 }
