@@ -28,19 +28,19 @@ export default function PartenairesPage() {
       <section className="section-spacing bg-brand-off-white">
         <div className="container-hac">
           <AnimatedSection>
-            <p className="text-overline mb-4">Représentation</p>
-            <h2 className="text-heading-2 font-light text-brand-navy mb-12 max-w-2xl text-balance">
+            <p className="text-overline mb-4 font-semibold text-brand-teal">Représentation</p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-navy mb-12 max-w-2xl text-balance tracking-tight">
               Représentation OGEFREM/FERI
             </h2>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 lg:gap-16 items-start">
             <AnimatedSection delay={0.1} className="order-2 lg:order-1">
-              <div className="space-y-4">
-                <p className="text-editorial">
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl font-semibold text-brand-navy leading-relaxed">
                   HAC Group intervient en tant que mandataire et sous‑agent de la Représentation OGEFREM RAN, aussi bien dans la zone Europe, au Moyen‑Orient que dans la région (Représentation d&apos;Anvers / Belgique).
                 </p>
-                <p className="text-editorial">
+                <p className="text-lg md:text-xl font-semibold text-brand-navy leading-relaxed">
                   Notre expertise nous permet d&apos;assurer une gestion professionnelle et fiable des opérations 
                   portuaires et commerciales, garantissant conformité et traçabilité à chaque étape.
                 </p>
