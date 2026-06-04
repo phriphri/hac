@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 const navLinks = [
@@ -96,52 +95,52 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-white flex flex-col justify-center items-center"
-          >
-            <div className="flex flex-col items-center gap-8">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.07, duration: 0.4 }}
-                >
-                  <Link
-                    href={link.href}
-                    prefetch={true}
-                    className={`text-2xl font-light tracking-wide transition-colors ${
-                      pathname === link.href
-                        ? 'text-brand-teal'
-                        : 'text-brand-navy/70 hover:text-brand-navy'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.4 }}
-                className="mt-4"
+      {/* Mobile Menu — CSS transition instead of framer-motion */}
+      <div
+        className={`fixed inset-0 z-40 bg-white flex flex-col justify-center items-center transition-all duration-300 ${
+          mobileOpen
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="flex flex-col items-center gap-8">
+          {navLinks.map((link, i) => (
+            <div
+              key={link.href}
+              style={{
+                opacity: mobileOpen ? 1 : 0,
+                transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)',
+                transition: `opacity 0.4s ease ${i * 0.07}s, transform 0.4s ease ${i * 0.07}s`,
+              }}
+            >
+              <Link
+                href={link.href}
+                prefetch={true}
+                className={`text-2xl font-light tracking-wide transition-colors ${
+                  pathname === link.href
+                    ? 'text-brand-teal'
+                    : 'text-brand-navy/70 hover:text-brand-navy'
+                }`}
               >
-                <Link href="/contact" className="btn-primary">
-                  Nous contacter
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
-              </motion.div>
+                {link.label}
+              </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          ))}
+          <div
+            style={{
+              opacity: mobileOpen ? 1 : 0,
+              transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'opacity 0.4s ease 0.4s, transform 0.4s ease 0.4s',
+            }}
+            className="mt-4"
+          >
+            <Link href="/contact" className="btn-primary">
+              Nous contacter
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -1,10 +1,14 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowUpRight, Truck, BarChart3, Leaf, Globe2, Building2, HeartPulse, GraduationCap } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import SectionImage from '@/components/SectionImage';
 import Partners from '@/components/Partners';
+
+export const metadata = {
+  title: 'Secteurs d\'activité — HAC Group',
+  description:
+    'Importation, hydrocarbures, agro-industrie, énergies renouvelables, infrastructure, santé et formation : les secteurs stratégiques de HAC Group.',
+};
 
 const secteurs = [
   {
@@ -52,7 +56,7 @@ export default function SecteursPage() {
         <div className="container-hac">
           <AnimatedSection>
             <p className="text-overline mb-4">Secteurs visés</p>
-            <h1 className="text-heading-1 md:text-display font-light text-brand-navy max-w-4xl text-balance">
+            <h1 className="text-heading-1 md:text-display font-bold text-brand-teal max-w-4xl text-balance mb-8">
               Des investissements stratégiques pour une croissance partagée
             </h1>
           </AnimatedSection>
@@ -70,7 +74,7 @@ export default function SecteursPage() {
                     <secteur.icon className="w-7 h-7 text-brand-teal" strokeWidth={1} />
                   </div>
                   
-                  <h2 className="text-lg font-medium text-brand-navy mb-3 group-hover:text-white transition-colors duration-500">
+                  <h2 className="text-heading-3 font-bold text-brand-teal mb-4 group-hover:text-brand-teal-dark transition-colors duration-500">
                     {secteur.title}
                   </h2>
                   <p className="text-body text-brand-navy/60 leading-relaxed group-hover:text-white/60 transition-colors duration-500">
@@ -88,7 +92,7 @@ export default function SecteursPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-brand-navy-deep to-brand-navy" />
         <div className="container-hac relative z-10 text-center">
           <AnimatedSection>
-            <h2 className="text-heading-2 font-light text-white mb-6 max-w-2xl mx-auto text-balance">
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 max-w-2xl mx-auto text-balance">
               Une expertise au service du développement
             </h2>
             <p className="text-lg text-white/50 mb-10 max-w-xl mx-auto">

@@ -1,10 +1,14 @@
-'use client';
-
 import Link from 'next/link';
 import { Mail, Phone, Smartphone, Globe, ArrowUpRight, ChevronRight, Building2, Ship, FileText, Users } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import SectionImage from '@/components/SectionImage';
 import Partners from '@/components/Partners';
+
+export const metadata = {
+  title: 'Partenaires & Représentations — HAC Group',
+  description:
+    'OGEFREM, Sharaf Shipping Agency, ACBC : découvrez les partenaires stratégiques et représentations de HAC Group.',
+};
 
 export default function PartenairesPage() {
   return (
@@ -14,7 +18,7 @@ export default function PartenairesPage() {
         <div className="container-hac">
           <AnimatedSection>
             <p className="text-overline mb-4">Partenariats</p>
-            <h1 className="text-heading-1 md:text-display font-light text-brand-navy max-w-4xl text-balance">
+            <h1 className="text-heading-1 md:text-display font-bold text-brand-teal max-w-4xl text-balance mb-8">
               Partenaires & Représentations
             </h1>
             <p className="text-editorial mt-6 max-w-2xl">
@@ -29,24 +33,24 @@ export default function PartenairesPage() {
         <div className="container-hac">
           <AnimatedSection>
             <p className="text-overline mb-4 font-semibold text-brand-teal">Représentation</p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-navy mb-12 max-w-2xl text-balance tracking-tight">
-              Représentation OGEFREM/FERI
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
+              Représentation OGEFREM / FERI
             </h2>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 lg:gap-16 items-start">
             <AnimatedSection delay={0.1} className="order-2 lg:order-1">
               <div className="space-y-6">
-                <p className="text-lg md:text-xl font-semibold text-brand-navy leading-relaxed">
+                <p>
                   HAC Group intervient en tant que mandataire et sous‑agent de la Représentation OGEFREM RAN, aussi bien dans la zone Europe, au Moyen‑Orient que dans la région (Représentation d&apos;Anvers / Belgique).
                 </p>
-                <p className="text-lg md:text-xl font-semibold text-brand-navy leading-relaxed">
-                  Notre expertise nous permet d&apos;assurer une gestion professionnelle et fiable des opérations 
+                <p >
+                  Notre expertise nous permet d&apos;assurer une gestion professionnelle et fiable des opérations
                   portuaires et commerciales, garantissant conformité et traçabilité à chaque étape.
                 </p>
-                
+
                 <div className="mt-6 space-y-3">
-                  <h3 className="text-lg font-medium text-brand-navy mb-3 flex items-center gap-2">
+                  <h3 className="text-heading-3 font-bold text-brand-teal mb-4 flex items-center gap-2">
                     <FileText className="w-5 h-5 text-brand-teal" />
                     Nos services
                   </h3>
@@ -85,9 +89,12 @@ export default function PartenairesPage() {
         <div className="container-hac">
           <AnimatedSection>
             <p className="text-overline mb-4">Partenaire stratégique</p>
-            <h2 className="text-heading-2 font-light text-brand-navy mb-12 max-w-2xl text-balance">
-              Partenaire opérationnel — EAU & Moyen-Orient
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
+              Agents portuaires
             </h2>
+            <h3 className="text-heading-3 font-bold text-brand-teal mb-4">
+              Zone EAU & Moyen-Orient
+            </h3>
           </AnimatedSection>
 
           <div className="max-w-4xl mx-auto">
@@ -97,26 +104,26 @@ export default function PartenairesPage() {
                 <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
                   <Ship className="w-64 h-64 text-brand-navy" strokeWidth={1} />
                 </div>
-                
+
                 <div className="flex items-start gap-4 mb-6">
                   <div className="shrink-0 w-12 h-12 flex items-center justify-center border border-brand-gray-line bg-brand-off-white">
                     <Building2 className="w-6 h-6 text-brand-teal" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="text-heading-3 font-medium text-brand-navy mb-2">
+                    <h3 className="text-heading-3 font-bold text-brand-teal mb-4">
                       Sharaf Shipping Agency
                     </h3>
                     <p className="text-sm text-brand-teal font-medium">Émirats Arabes Unis & Moyen-Orient</p>
                   </div>
                 </div>
-                
+
                 <p className="text-editorial mb-6 relative z-10">
-                  Sharaf Shipping Agency est un acteur international reconnu dans les domaines du transport maritime, 
+                  Sharaf Shipping Agency est un acteur international reconnu dans les domaines du transport maritime,
                   de la logistique et des opérations portuaires au Moyen-Orient et dans plusieurs zones stratégiques internationales.
                 </p>
-                
+
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-brand-navy mb-3 flex items-center gap-2">
+                  <h4 className="text-heading-3 font-bold text-brand-teal mb-4 flex items-center gap-2">
                     <Globe className="w-4 h-4 text-brand-teal" />
                     Domaines d&apos;intervention
                   </h4>
@@ -135,14 +142,14 @@ export default function PartenairesPage() {
                     ))}
                   </div>
                 </div>
-                
+
                 <p className="text-sm text-brand-navy/60 leading-relaxed mb-6">
-                  Dans le cadre des opérations HAC Group, Sharaf Shipping Agency intervient comme partenaire terrain 
+                  Dans le cadre des opérations HAC Group, Sharaf Shipping Agency intervient comme partenaire terrain
                   pour les opérations liées au fret et au suivi des cargaisons.
                 </p>
-                
-                <Link 
-                  href="https://www.sharafshipping.com/" 
+
+                <Link
+                  href="https://www.sharafshipping.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-medium text-brand-teal hover:text-brand-teal-dark transition-colors"
@@ -163,8 +170,8 @@ export default function PartenairesPage() {
         <div className="container-hac">
           <AnimatedSection>
             <p className="text-overline mb-4">Contact</p>
-            <h2 className="text-heading-2 font-light text-brand-navy mb-12 max-w-2xl text-balance">
-              Contacts opérationnels
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
+              Contacts ops
             </h2>
           </AnimatedSection>
 
@@ -192,22 +199,22 @@ export default function PartenairesPage() {
                       <Users className="w-6 h-6 text-brand-teal" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium text-brand-navy">{contact.name}</h3>
+                      <h3 className="text-heading-3 font-bold text-brand-teal mb-4">{contact.name}</h3>
                       <p className="text-sm text-brand-teal">{contact.role}</p>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
                       <Mail className="w-4 h-4 text-brand-teal shrink-0 mt-1" />
-                      <a 
+                      <a
                         href={`mailto:${contact.email}`}
                         className="text-sm text-brand-navy/70 hover:text-brand-teal transition-colors"
                       >
                         {contact.email}
                       </a>
                     </div>
-                    
+
                     <div className="flex items-start gap-3">
                       <Phone className="w-4 h-4 text-brand-teal shrink-0 mt-1" />
                       <div>
@@ -215,7 +222,7 @@ export default function PartenairesPage() {
                         <p className="text-sm text-brand-navy/70">{contact.direct}</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-3">
                       <Smartphone className="w-4 h-4 text-brand-teal shrink-0 mt-1" />
                       <div>
@@ -236,7 +243,7 @@ export default function PartenairesPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-brand-navy-deep to-brand-navy" />
         <div className="container-hac relative z-10 text-center">
           <AnimatedSection>
-            <h2 className="text-heading-2 font-light text-white mb-6 max-w-2xl mx-auto text-balance">
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 max-w-2xl mx-auto text-balance">
               Intéressé par nos partenariats ?
             </h2>
             <p className="text-lg text-white/50 mb-10 max-w-xl mx-auto">

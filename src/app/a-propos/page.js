@@ -1,10 +1,14 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowUpRight, ChevronRight, Target, Eye, Handshake, Lightbulb, ShieldCheck, Sprout, Database, Anchor, BarChart } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import SectionImage from '@/components/SectionImage';
 import Partners from '@/components/Partners';
+
+export const metadata = {
+  title: 'À propos — HAC Group',
+  description:
+    'African-Canadian Holding Group : mission, vision, valeurs et objet social. Pont stratégique entre le Canada, la RDC et l\'Afrique.',
+};
 
 const valeurs = [
   { icon: Lightbulb, title: 'Innovation', text: 'Solutions technologiques de pointe pour moderniser les échanges commerciaux.' },
@@ -21,7 +25,7 @@ export default function AProposPage() {
         <div className="container-hac">
           <AnimatedSection>
             <p className="text-overline mb-4">À propos</p>
-            <h1 className="text-heading-1 md:text-display font-light text-brand-navy max-w-3xl text-balance">
+            <h1 className="text-heading-1 md:text-display font-bold text-brand-teal max-w-4xl text-balance mb-8">
               African Canadian Holding Group
             </h1>
           </AnimatedSection>
@@ -43,21 +47,21 @@ export default function AProposPage() {
             <AnimatedSection delay={0.1}>
               <div className="lg:pt-6">
                 <div className="separator-short mb-8" />
-                <p className="text-editorial mb-4">
+                <p className="text-body text-brand-navy mb-4">
                   African-Canadian Holding Group est une société constituée selon le droit canadien et
                   membre actif de la prestigieuse chambre de commerce ACBC (African Canadian Business Chamber).
                 </p>
-                <p className="text-editorial mb-4">
+                <p className="text-body text-brand-navy mb-4">
                   Grâce à son engagement dans le développement économique, la société aspire à devenir un acteur
                   clé dans la promotion des relations commerciales, industrielles et financières entre le Canada,
                   la République Démocratique du Congo et, plus largement, le continent africain.
                 </p>
-                <p className="text-editorial mb-4">
+                <p className="text-body text-brand-navy mb-4">
                   Avec une expertise avérée dans le domaine des relations internationales et un réseau solide de
                   partenaires dans les secteurs clés, African-Canadian Holding Group se distingue comme un acteur
                   de confiance, capable de favoriser un impact économique tangible entre le Canada et l&apos;Afrique.
                 </p>
-                <p className="text-editorial">
+                <p className="text-body text-brand-navy">
                   L&apos;objectif ultime est de construire un avenir prospère, en mutualisant les forces des deux continents.
                 </p>
               </div>
@@ -75,9 +79,9 @@ export default function AProposPage() {
             <AnimatedSection>
               <div className="flex items-start gap-4 mb-4">
                 <Target className="w-6 h-6 text-brand-teal shrink-0 mt-1" strokeWidth={1.5} />
-                <h2 className="text-heading-2 font-light text-brand-navy">Mission</h2>
+                <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">Mission</h2>
               </div>
-              <p className="text-editorial">
+              <p className="text-body text-brand-navy">
                 Jouer un rôle de pont stratégique entre le Canada et l&apos;Afrique, en créant des synergies
                 concrètes et durables pour le développement économique, tout en facilitant les échanges
                 commerciaux, les partenariats stratégiques et les opportunités d&apos;investissements.
@@ -87,9 +91,9 @@ export default function AProposPage() {
             <AnimatedSection delay={0.1}>
               <div className="flex items-start gap-4 mb-4">
                 <Eye className="w-6 h-6 text-brand-teal shrink-0 mt-1" strokeWidth={1.5} />
-                <h2 className="text-heading-2 font-light text-brand-navy">Vision</h2>
+                <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">Vision</h2>
               </div>
-              <p className="text-editorial">
+              <p className="text-body text-brand-navy">
                 Devenir la plateforme stratégique de référence qui soutient et accélère le développement
                 de projets innovants, en reliant entrepreneurs, investisseurs et partenaires des régions
                 ciblées pour créer des synergies économiques, technologiques et sociales.
@@ -106,7 +110,7 @@ export default function AProposPage() {
         <div className="container-hac">
           <AnimatedSection>
             <p className="text-overline mb-3">Objet social</p>
-            <h2 className="text-heading-2 font-light text-brand-navy mb-3 max-w-2xl">
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 max-w-2xl text-balance">
               Nos domaines d&apos;intervention
             </h2>
             <div className="separator-short mb-12" />
@@ -133,10 +137,10 @@ export default function AProposPage() {
                     0{i + 1}
                   </span>
                   <div>
-                    <h3 className="text-heading-3 font-normal text-brand-navy mb-2">
+                    <h3 className="text-heading-3 font-bold text-brand-teal mb-4">
                       {item.title}
                     </h3>
-                    <p className="text-body text-brand-navy/50 max-w-xl">
+                    <p className="text-body text-brand-navy max-w-xl">
                       {item.text}
                     </p>
                   </div>
@@ -152,7 +156,7 @@ export default function AProposPage() {
         <div className="container-hac">
           <AnimatedSection>
             <p className="text-overline mb-3">Nos valeurs</p>
-            <h2 className="text-heading-2 font-light text-brand-navy mb-12 max-w-lg">
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 max-w-lg text-balance">
               Les fondements de notre engagement
             </h2>
           </AnimatedSection>
@@ -165,8 +169,8 @@ export default function AProposPage() {
                     <v.icon className="w-5 h-5 text-brand-teal" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-brand-navy mb-2">{v.title}</h3>
-                    <p className="text-sm text-brand-navy/50 leading-relaxed">{v.text}</p>
+                    <h3 className="text-heading-3 font-bold text-brand-teal mb-4">{v.title}</h3>
+                    <p className="text-sm text-brand-navy leading-relaxed">{v.text}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -181,10 +185,10 @@ export default function AProposPage() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <AnimatedSection>
               <p className="text-overline mb-4">Innovation</p>
-              <h2 className="text-heading-2 font-light text-brand-navy mb-6">
+              <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
                 Le Logiciel HAC Group
               </h2>
-              <p className="text-editorial mx-auto">
+              <p className="text-body text-brand-navy mx-auto">
                 Notre solution logicielle sur mesure assure la traçabilité des cargaisons de près et la collecte 
                 de la FERI. Une technologie avancée pour réduire la dépendance à l&apos;intervention humaine.
               </p>
@@ -200,8 +204,8 @@ export default function AProposPage() {
               <AnimatedSection key={i} delay={i * 0.1}>
                 <div className="p-8 border border-brand-gray-line h-full hover:border-brand-teal transition-colors duration-300">
                   <feature.icon className="w-8 h-8 text-brand-teal mb-6" strokeWidth={1.5} />
-                  <h3 className="text-lg font-medium text-brand-navy mb-3">{feature.title}</h3>
-                  <p className="text-sm text-brand-navy/60 leading-relaxed">{feature.text}</p>
+                  <h3 className="text-heading-3 font-bold text-brand-teal mb-4">{feature.title}</h3>
+                  <p className="text-sm text-brand-navy leading-relaxed">{feature.text}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -216,19 +220,19 @@ export default function AProposPage() {
             <AnimatedSection>
               <div className="text-center mb-8">
                 <p className="text-overline mb-3">Partenariat stratégique</p>
-                <h2 className="text-heading-2 font-light text-brand-navy mb-4">
+                <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
                   Membre de l&apos;ACBC
                 </h2>
                 <div className="separator-short mx-auto" />
               </div>
-              
+
               <div className="bg-white border border-brand-gray-line p-6 md:p-10 lg:p-12 relative overflow-hidden">
                 {/* Decorative subtle background element */}
                 <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
                   <Handshake className="w-64 h-64 text-brand-navy" strokeWidth={1} />
                 </div>
-                
-                <p className="text-editorial md:text-xl text-center mb-8 relative z-10 mx-auto">
+
+                <p className="text-body md:text-xl text-center mb-8 relative z-10 mx-auto">
                   Depuis sa création, l&apos;ACBC (African Canadian Business Chamber) cherche à chapeauter
                   de nombreuses initiatives clés pour améliorer les résultats des entreprises africaines
                   et canadiennes sur les deux continents.
@@ -258,7 +262,7 @@ export default function AProposPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-brand-navy-deep to-brand-navy" />
         <div className="container-hac relative z-10 text-center">
           <AnimatedSection>
-            <h2 className="text-heading-1 font-light text-white mb-6 max-w-2xl mx-auto text-balance">
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 max-w-2xl mx-auto text-balance">
               Construisons ensemble l&apos;avenir économique
             </h2>
             <p className="text-lg text-white/50 mb-10 max-w-xl mx-auto">

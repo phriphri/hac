@@ -9,8 +9,8 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          teal: '#00A896',
-          'teal-dark': '#008F7F',
+          teal: '#00b3c7ff',
+          'teal-dark': '#00a2ceff',
           'teal-light': '#E0F7F5',
           navy: '#0F2137',
           'navy-deep': '#0A0F1A',

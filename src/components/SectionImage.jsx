@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function SectionImage({ src, alt, aspectRatio = 'aspect-[16/10]', className = '' }) {
+export default function SectionImage({ src, alt, aspectRatio = 'aspect-[16/10]', className = '', priority = false }) {
   const hasImage = src && src !== '';
 
   if (!hasImage) {
@@ -19,6 +19,7 @@ export default function SectionImage({ src, alt, aspectRatio = 'aspect-[16/10]',
         fill
         className="object-cover"
         sizes="(max-width: 768px) 100vw, 50vw"
+        priority={priority}
       />
     </div>
   );

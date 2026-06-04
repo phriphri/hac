@@ -1,33 +1,41 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
 
 export default function AnimatedSection({ children, className = '', delay = 0 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
-  const [isMounted, setIsMounted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { rootMargin: '-80px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
-  // Only animate after component is mounted to prevent hydration issues
-  const shouldAnimate = isMounted && isInView;
-
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={false}
-      animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{
-        duration: 0.8,
-        delay: shouldAnimate ? delay : 0,
-        ease: [0.25, 0.1, 0.25, 1],
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+        transition: `opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s, transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s`,
+        willChange: isVisible ? 'auto' : 'opacity, transform',
       }}
       className={className}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, ArrowRight, Anchor, Shield, BarChart3, Globe2, Cpu, Truck, Leaf, Building2, HeartPulse, GraduationCap } from 'lucide-react';
@@ -34,6 +32,7 @@ export default function HomePage() {
             alt="Coopération économique — African Canadian Holding"
             aspectRatio=""
             className="!absolute inset-0"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-deep/95 via-brand-navy-deep/80 to-brand-navy-deep/50" />
         </div>
@@ -44,7 +43,7 @@ export default function HomePage() {
               <p className="text-brand-teal font-medium tracking-widest uppercase text-sm mb-6">
                 African Canadian Holding Group
               </p>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-light text-white mb-8 leading-[1.1] tracking-tight text-balance">
+              <h1 className="text-heading-1 md:text-display font-bold text-white max-w-4xl text-balance mb-8">
                 Construire des ponts économiques durables entre{' '}
                 <span className="font-normal">l&apos;Afrique</span> et le{' '}
                 <span className="font-normal">Canada</span>
@@ -84,15 +83,15 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 lg:gap-16 items-center">
             <AnimatedSection>
               <p className="text-overline mb-3">À propos</p>
-              <h2 className="text-heading-2 font-light text-brand-navy mb-6">
+              <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
                 Un acteur de confiance au cœur des échanges{' '}
-                <span className="text-brand-teal">Canada–Afrique</span>
+                <span className="text-brand-navy">Canada–Afrique</span>
               </h2>
               <div className="space-y-4">
-                <p className="text-editorial">
+                <p className="text-body text-brand-navy">
                   HAC Group Congo, filiale de HAC Group, est enregistrée conformément au droit congolais et assure la représentation locale du groupe en République Démocratique du Congo.
                 </p>
-                <p className="text-editorial">
+                <p className="text-body text-brand-navy">
                   Notre mission est de jouer un rôle de pont stratégique entre ces deux continents,
                   en créant des synergies concrètes et durables pour le développement économique tout en
                   facilitant les échanges commerciaux, les partenariats stratégiques et les opportunités d&apos;investissements.
@@ -124,7 +123,7 @@ export default function HomePage() {
         <div className="container-hac">
           <AnimatedSection>
             <p className="text-overline mb-3">Notre vision</p>
-            <h2 className="text-heading-2 font-light text-brand-navy mb-3 max-w-2xl">
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 max-w-2xl text-balance">
               Des objectifs stratégiques au service du développement
             </h2>
             <div className="separator-short mb-12" />
@@ -159,10 +158,10 @@ export default function HomePage() {
                     0{i + 1}
                   </span>
                   <div>
-                    <h3 className="text-heading-3 font-normal text-brand-navy mb-2 group-hover:text-brand-teal transition-colors duration-300">
+                    <h3 className="text-heading-3 font-bold text-brand-teal mb-2 group-hover:text-brand-teal-dark transition-colors duration-300">
                       {obj.title}
                     </h3>
-                    <p className="text-body text-brand-navy/50 max-w-xl">
+                    <p className="text-body text-brand-navy max-w-xl">
                       {obj.text}
                     </p>
                   </div>
@@ -182,7 +181,7 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
               <div>
                 <p className="text-overline mb-3">Secteurs d&apos;activité</p>
-                <h2 className="text-heading-2 font-light text-brand-navy max-w-lg">
+                <h2 className="text-heading-2 font-bold text-brand-teal mb-6 max-w-lg text-balance">
                   Des secteurs stratégiques pour la croissance
                 </h2>
               </div>
@@ -198,10 +197,10 @@ export default function HomePage() {
               <AnimatedSection key={i} delay={i * 0.06}>
                 <div className="group bg-white h-full p-6 md:p-8 border border-brand-gray-line transition-all duration-300 hover:border-brand-teal hover:shadow-lg">
                   <s.icon className="w-5 h-5 text-brand-teal mb-4 transition-colors duration-300 group-hover:text-brand-teal-dark" strokeWidth={1.5} />
-                  <h3 className="text-base font-medium text-brand-navy mb-2 transition-colors duration-300 group-hover:text-brand-teal">
+                  <h3 className="text-heading-3 font-bold text-brand-teal mb-4 transition-colors duration-300 group-hover:text-brand-teal-dark">
                     {s.title}
                   </h3>
-                  <p className="text-sm text-brand-navy/50 leading-relaxed transition-colors duration-300 group-hover:text-brand-navy/70">
+                  <p className="text-sm text-brand-navy leading-relaxed transition-colors duration-300 group-hover:text-brand-navy/80">
                     {s.desc}
                   </p>
                 </div>
@@ -217,10 +216,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 lg:gap-16 items-center">
             <AnimatedSection>
               <p className="text-overline mb-3">Solution technologique</p>
-              <h2 className="text-heading-2 font-light mb-4">
+              <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
                 Un logiciel de pointe pour la traçabilité
               </h2>
-              <p className="text-lg text-white/50 leading-relaxed mb-6 max-w-xl">
+              <p className="text-lg text-white/80 leading-relaxed mb-6 max-w-xl">
                 Notre solution logicielle sur mesure assure la traçabilité des cargaisons
                 et la collecte de la FERI grâce à une technologie blockchain innovante.
               </p>
@@ -257,10 +256,10 @@ export default function HomePage() {
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto mb-12">
               <p className="text-overline mb-3">Vision internationale</p>
-              <h2 className="text-heading-2 font-light text-brand-navy mb-4">
+              <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
                 Afrique — RDC — Canada
               </h2>
-              <p className="text-editorial mx-auto">
+              <p className="text-body text-brand-navy mx-auto">
                 Grâce aux données recueillies, nous développons des projets sur mesure,
                 parfaitement adaptés aux besoins identifiés sur le marché et à la réalité du terrain.
               </p>
@@ -284,10 +283,10 @@ export default function HomePage() {
             ].map((region, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
                 <div className="bg-white h-full p-5 md:p-8 lg:p-10 hover:bg-brand-off-white transition-colors duration-500 flex flex-col justify-center">
-                  <h3 className="text-lg font-medium text-brand-navy mb-3 relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-px after:bg-brand-teal">
+                  <h3 className="text-heading-3 font-bold text-brand-teal mb-4 relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-px after:bg-brand-teal">
                     {region.title}
                   </h3>
-                  <p className="text-body text-brand-navy/60 leading-relaxed">
+                  <p className="text-body text-brand-navy leading-relaxed">
                     {region.text}
                   </p>
                 </div>
@@ -302,7 +301,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-br from-brand-navy-deep to-brand-navy" />
         <div className="container-hac relative z-10 text-center">
           <AnimatedSection>
-            <h2 className="text-heading-1 font-light text-white mb-6 max-w-2xl mx-auto text-balance">
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 max-w-2xl mx-auto text-balance">
               Prêt à développer vos projets entre l&apos;Afrique et le Canada ?
             </h2>
             <p className="text-lg text-white/50 mb-10 max-w-xl mx-auto">

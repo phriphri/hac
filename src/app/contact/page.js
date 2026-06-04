@@ -11,10 +11,10 @@ export default function ContactPage() {
         <div className="container-hac">
           <AnimatedSection>
             <p className="text-overline mb-4">Contact</p>
-            <h1 className="text-heading-1 md:text-display font-light text-brand-navy max-w-4xl text-balance">
+            <h1 className="text-heading-1 md:text-display font-bold text-brand-teal max-w-4xl text-balance mb-8">
               Nous contacter
             </h1>
-            <p className="text-editorial mt-6">
+            <p className="text-body text-brand-navy mt-6">
               Explorez les opportunités de partenariat avec HAC Group.
             </p>
           </AnimatedSection>
@@ -28,7 +28,7 @@ export default function ContactPage() {
             {/* Contact Info */}
             <div className="md:col-span-5 lg:col-span-5 space-y-6 md:space-y-8 order-2 md:order-1">
               <AnimatedSection>
-                <h2 className="text-heading-3 font-medium text-brand-navy mb-6">
+                <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
                   HAC Group
                 </h2>
                 
@@ -61,7 +61,7 @@ export default function ContactPage() {
             <div className="md:col-span-7 lg:col-span-7 order-1 md:order-2">
               <AnimatedSection delay={0.2}>
                 <div className="bg-white p-6 md:p-8 border border-brand-gray-line shadow-sm">
-                  <h2 className="text-heading-3 font-medium text-brand-navy mb-4">
+                  <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
                     Envoyez-nous un message
                   </h2>
                   <form className="space-y-4" onSubmit={(e) => {

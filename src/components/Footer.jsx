@@ -35,7 +35,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/30 mb-6">
+            <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-brand-teal mb-6">
               Navigation
             </h4>
             <ul className="space-y-3">
@@ -54,7 +54,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/30 mb-6">
+            <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-brand-teal mb-6">
               Contact
             </h4>
             <ul className="space-y-3 text-sm text-white/60">

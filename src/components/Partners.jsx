@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -36,7 +38,7 @@ export default function Partners() {
         <AnimatedSection>
           <div className="text-center mb-12 md:mb-16">
             <p className="text-overline mb-4">Partenariats</p>
-            <h2 className="text-heading-2 font-light text-brand-navy text-balance">
+            <h2 className="text-heading-2 font-bold text-brand-teal mb-6 text-balance">
               Nos Partenaires
             </h2>
           </div>
@@ -64,7 +66,7 @@ export default function Partners() {
                     }}
                   />
                 </div>
-                <h3 className="text-base md:text-lg font-medium text-brand-navy mb-2 group-hover:text-brand-teal transition-colors duration-300">
+                <h3 className="text-heading-3 font-bold text-brand-teal mb-4 group-hover:text-brand-teal-dark transition-colors duration-300">
                   {partner.shortName}
                 </h3>
                 <p className="text-xs md:text-sm text-brand-navy/60 group-hover:text-brand-teal/80 transition-colors duration-300">
