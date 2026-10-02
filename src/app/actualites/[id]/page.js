@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Calendar, Clock, User, ArrowRight, Share2, Sparkles, Building2 } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
-import SectionImage from '@/components/SectionImage';
 import { getActualiteById, getActualites } from '@/lib/actualites';
 
 export async function generateMetadata({ params }) {
@@ -89,18 +88,6 @@ export default async function ArticlePage({ params }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Colonne Principale : Texte de l'article */}
             <article className="lg:col-span-8">
-              {/* Image d'illustration si présente */}
-              {article.image && (
-                <div className="mb-10 overflow-hidden border border-brand-gray-line shadow-sm">
-                  <SectionImage
-                    src={article.image}
-                    alt={article.title}
-                    aspectRatio="aspect-[16/9]"
-                    priority
-                  />
-                </div>
-              )}
-
               {/* Corps de l'article */}
               <div className="space-y-6 text-brand-navy leading-relaxed text-base md:text-lg">
                 {(article.content || article.desc)
