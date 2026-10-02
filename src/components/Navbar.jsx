@@ -37,6 +37,11 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  // Masquer complètement la Navbar du site sur les pages d'administration
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   return (
     <>
       <nav

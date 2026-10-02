@@ -4,6 +4,8 @@ import { ArrowUpRight, ArrowRight, Anchor, Shield, BarChart3, Globe2, Cpu, Truck
 import AnimatedSection from '@/components/AnimatedSection';
 import SectionImage from '@/components/SectionImage';
 import Partners from '@/components/Partners';
+import NewsSection from '@/components/NewsSection';
+import { getActualites } from '@/lib/actualites';
 
 /* ======================================================
    PAGE D'ACCUEIL — HAC GROUP
@@ -20,7 +22,8 @@ const secteurs = [
   { icon: GraduationCap, title: 'Formation & Compétences', desc: 'Transfert de connaissances entre les continents.' },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const actualites = await getActualites();
   return (
     <>
       {/* ===== HERO ===== */}
@@ -295,6 +298,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ===== SECTION ACTUALITÉS ===== */}
+      <NewsSection initialData={actualites} />
 
       {/* ===== CTA FINAL ===== */}
       <section className="relative py-12 md:py-16 lg:py-20">

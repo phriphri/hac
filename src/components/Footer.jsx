@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { ArrowUpRight } from 'lucide-react';
 
 const footerLinks = [
@@ -11,6 +14,12 @@ const footerLinks = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // Masquer le footer sur les pages d'administration
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
   return (
     <footer className="bg-brand-navy-deep text-white">
       {/* Main footer */}
