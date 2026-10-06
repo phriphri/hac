@@ -5,6 +5,8 @@ import { ArrowLeft, Calendar, Clock, User, ArrowRight, Share2, Sparkles, Buildin
 import AnimatedSection from '@/components/AnimatedSection';
 import { getActualiteById, getActualites } from '@/lib/actualites';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params }) {
   const article = await getActualiteById(params.id);
   if (!article) return { title: 'Article non trouvé — HAC Group' };

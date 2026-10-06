@@ -7,6 +7,8 @@ import Partners from '@/components/Partners';
 import NewsSection from '@/components/NewsSection';
 import { getActualites } from '@/lib/actualites';
 
+export const dynamic = 'force-dynamic';
+
 /* ======================================================
    PAGE D'ACCUEIL — HAC GROUP
    Contenu basé strictement sur le Business Plan PDF
