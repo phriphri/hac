@@ -44,6 +44,7 @@ export async function POST(request) {
         access: 'public',
         addRandomSuffix: true,
         contentType: image.type,
+        token: process.env.BLOB_READ_WRITE_TOKEN,
       });
       url = blob.url;
     } else if (process.env.NODE_ENV === 'development') {

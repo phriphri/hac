@@ -32,7 +32,10 @@ export async function getActualites() {
   // Si le token Vercel Blob est configuré (sur Vercel)
   if (process.env.BLOB_READ_WRITE_TOKEN) {
     try {
-      const { blobs } = await list({ prefix: BLOB_FILENAME });
+      const { blobs } = await list({
+        prefix: BLOB_FILENAME,
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+      });
       const blob = blobs.find((b) => b.pathname === BLOB_FILENAME || b.pathname.endsWith(BLOB_FILENAME));
 
       if (blob && blob.downloadUrl) {
@@ -79,6 +82,7 @@ export async function saveActualites(data) {
         access: 'public',
         addRandomSuffix: false,
         allowOverwrite: true,
+        token: process.env.BLOB_READ_WRITE_TOKEN,
       });
     } catch (err) {
       console.error('Erreur écriture Vercel Blob:', err);
