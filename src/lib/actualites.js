@@ -78,6 +78,7 @@ export async function saveActualites(data) {
       await put(BLOB_FILENAME, JSON.stringify(data, null, 2), {
         access: 'public',
         addRandomSuffix: false,
+        allowOverwrite: true,
       });
     } catch (err) {
       console.error('Erreur écriture Vercel Blob:', err);
