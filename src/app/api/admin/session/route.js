@@ -2,18 +2,10 @@ import { NextResponse } from 'next/server';
 import {
   ADMIN_SESSION_COOKIE,
   createAdminSession,
-  isAdminAuthenticated,
   verifyAdminPassword,
 } from '@/lib/admin-auth';
 
 export const dynamic = 'force-dynamic';
-
-export async function GET(request) {
-  return NextResponse.json(
-    { authenticated: isAdminAuthenticated(request) },
-    { headers: { 'Cache-Control': 'no-store' } }
-  );
-}
 
 export async function POST(request) {
   if (!process.env.ADMIN_PASSWORD) {

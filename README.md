@@ -146,7 +146,7 @@ Le site est entièrement responsive avec les breakpoints suivants :
 
 Les photos d'actualités importées depuis `/admin` sont stockées dans Vercel Blob en production. En développement local, elles sont enregistrées dans `public/uploads/actualites/`.
 
-Configurez aussi `ADMIN_PASSWORD` comme variable serveur dans les paramètres Vercel et dans `.env.local` en développement. Choisissez un mot de passe long et unique ; ne définissez pas `NEXT_PUBLIC_ADMIN_PASSWORD` et ne commitez jamais ces valeurs. La connexion crée un cookie de session HTTP-only, et les routes de publication, suppression et import de photos le vérifient côté serveur. Après avoir configuré les variables Vercel, redéployez le projet.
+Configurez aussi `ADMIN_PASSWORD` comme variable serveur dans les paramètres Vercel et dans `.env.local` en développement. Choisissez un mot de passe long et unique ; ne définissez pas `NEXT_PUBLIC_ADMIN_PASSWORD` et ne commitez jamais ces valeurs. La connexion crée un cookie de session HTTP-only, et les routes de publication, suppression et import de photos le vérifient côté serveur. La session est effacée à chaque nouveau chargement de la page `/admin`, qui demande alors à nouveau le mot de passe. Après avoir configuré les variables Vercel, redéployez le projet.
 
 ### Autres Plateformes
 

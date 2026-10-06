@@ -59,15 +59,16 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
-    fetch('/api/admin/session', { cache: 'no-store' })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.authenticated) {
-          setIsAuthenticated(true);
-          loadActualites();
+    fetch('/api/admin/session', { method: 'DELETE' })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Impossible de fermer la session précédente.');
         }
       })
-      .catch((err) => console.error('Vérification de la session administrateur:', err));
+      .catch((err) => {
+        console.error('Réinitialisation de la session administrateur:', err);
+        setNotification({ type: 'error', text: 'Impossible de réinitialiser la session. Rechargez la page avant de vous connecter.' });
+      });
   }, []);
 
   // Auto-dismiss notification après 4s
