@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getActualites, saveActualites } from '@/lib/actualites';
+import { isAdminAuthenticated } from '@/lib/admin-auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,6 +10,10 @@ export async function GET() {
 }
 
 export async function POST(request) {
+  if (!isAdminAuthenticated(request)) {
+    return NextResponse.json({ error: 'Authentification administrateur requise.' }, { status: 401 });
+  }
+
   try {
     const body = await request.json();
     const { title, category, date, desc, content, author, image, readTime, link } = body;
@@ -45,6 +50,10 @@ export async function POST(request) {
 }
 
 export async function DELETE(request) {
+  if (!isAdminAuthenticated(request)) {
+    return NextResponse.json({ error: 'Authentification administrateur requise.' }, { status: 401 });
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');

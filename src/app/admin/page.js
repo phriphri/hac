@@ -7,10 +7,8 @@ import {
   PlusCircle, Trash2, ArrowLeft, Lock, CheckCircle2, 
   AlertCircle, RefreshCw, Calendar, Tag, FileText, 
   Eye, EyeOff, ExternalLink, ShieldCheck, Image as ImageIcon,
-  Clock, User, Sparkles
+  Clock, User, Sparkles, Upload
 } from 'lucide-react';
-
-const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'admin';
 
 const availableImages = [
   { label: 'Coopération & Échanges', path: '/images/cooperation.jpg' },
@@ -28,6 +26,7 @@ export default function AdminPage() {
   const [actualites, setActualites] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [notification, setNotification] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -60,11 +59,15 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
-    const authStatus = sessionStorage.getItem('hac_secure_admin_session');
-    if (authStatus === 'active') {
-      setIsAuthenticated(true);
-      loadActualites();
-    }
+    fetch('/api/admin/session', { cache: 'no-store' })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.authenticated) {
+          setIsAuthenticated(true);
+          loadActualites();
+        }
+      })
+      .catch((err) => console.error('Vérification de la session administrateur:', err));
   }, []);
 
   // Auto-dismiss notification après 4s
@@ -75,22 +78,45 @@ export default function AdminPage() {
     }
   }, [notification]);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (passwordInput === ADMIN_PASSWORD) {
-      setIsAuthenticated(true);
-      setPasswordError(false);
-      sessionStorage.setItem('hac_secure_admin_session', 'active');
-      loadActualites();
-    } else {
-      setPasswordError(true);
+    setPasswordError(false);
+
+    try {
+      const res = await fetch('/api/admin/session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: passwordInput }),
+      });
+
+      if (res.ok) {
+        setIsAuthenticated(true);
+        setPasswordInput('');
+        loadActualites();
+      } else if (res.status === 401) {
+        setPasswordError(true);
+      } else {
+        const data = await res.json();
+        setNotification({ type: 'error', text: data.error || 'Connexion administrateur impossible.' });
+      }
+    } catch (err) {
+      console.error('Connexion administrateur:', err);
+      setNotification({ type: 'error', text: 'Erreur réseau ou serveur inaccessible.' });
     }
   };
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    sessionStorage.removeItem('hac_secure_admin_session');
-    setPasswordInput('');
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/admin/session', { method: 'DELETE' });
+      if (!res.ok) {
+        throw new Error('Impossible de fermer la session administrateur.');
+      }
+      setIsAuthenticated(false);
+      setPasswordInput('');
+    } catch (err) {
+      console.error('Déconnexion administrateur:', err);
+      setNotification({ type: 'error', text: 'Erreur lors de la déconnexion.' });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -130,6 +156,48 @@ export default function AdminPage() {
       setNotification({ type: 'error', text: 'Erreur réseau ou serveur inaccessible.' });
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      setNotification({ type: 'error', text: 'Choisissez une image au format JPG, PNG ou WebP.' });
+      e.target.value = '';
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setNotification({ type: 'error', text: 'La photo ne doit pas dépasser 5 Mo.' });
+      e.target.value = '';
+      return;
+    }
+
+    setUploadingImage(true);
+    setNotification(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+      const res = await fetch('/api/actualites/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Impossible d’importer cette photo.');
+      }
+
+      setFormData((current) => ({ ...current, image: data.url }));
+      setNotification({ type: 'success', text: 'Photo importée et prête à être publiée.' });
+    } catch (err) {
+      setNotification({ type: 'error', text: err.message || 'Erreur lors de l’import de la photo.' });
+    } finally {
+      setUploadingImage(false);
+      e.target.value = '';
     }
   };
 
@@ -345,19 +413,52 @@ export default function AdminPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-brand-navy mb-1.5 flex items-center gap-1.5">
-                    <ImageIcon className="w-3.5 h-3.5 text-brand-teal" /> Image d&apos;en-tête
+                    <ImageIcon className="w-3.5 h-3.5 text-brand-teal" /> Photo de l&apos;article
                   </label>
                   <select
                     value={formData.image}
                     onChange={(e) => setFormData({ ...formData, image: e.target.value })}
                     className="w-full px-2.5 py-2.5 border border-brand-gray-line text-xs text-brand-navy focus:border-brand-teal focus:outline-none bg-white"
                   >
+                    {!availableImages.some((img) => img.path === formData.image) && (
+                      <option value={formData.image}>Photo importée</option>
+                    )}
                     {availableImages.map((img) => (
                       <option key={img.path} value={img.path}>
                         {img.label}
                       </option>
                     ))}
                   </select>
+                  <div className="mt-2 flex items-center gap-3">
+                    <label
+                      htmlFor="article-image-upload"
+                      className={`inline-flex items-center gap-1.5 border border-brand-gray-line px-2.5 py-2 text-[11px] font-medium text-brand-teal hover:border-brand-teal transition-colors cursor-pointer ${uploadingImage ? 'opacity-50 pointer-events-none' : ''}`}
+                    >
+                      <Upload className="w-3.5 h-3.5" />
+                      {uploadingImage ? 'Import en cours…' : 'Importer une photo'}
+                    </label>
+                    <input
+                      id="article-image-upload"
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      onChange={handleImageUpload}
+                      disabled={uploadingImage}
+                      className="sr-only"
+                    />
+                    <span className="text-[10px] text-brand-gray-mid">JPG, PNG ou WebP · 5 Mo max.</span>
+                  </div>
+                  {formData.image && (
+                    <div className="relative mt-3 h-24 overflow-hidden border border-brand-gray-line bg-brand-off-white">
+                      <Image
+                        src={formData.image}
+                        alt="Aperçu de la photo de l’article"
+                        fill
+                        unoptimized
+                        sizes="200px"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -405,7 +506,7 @@ export default function AdminPage() {
 
               <button
                 type="submit"
-                disabled={submitting}
+                disabled={submitting || uploadingImage}
                 className="w-full btn-primary justify-center mt-2 cursor-pointer shadow-sm disabled:opacity-50"
               >
                 {submitting ? 'Publication en direct...' : 'Publier l\'article'}

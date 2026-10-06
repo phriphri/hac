@@ -30,6 +30,9 @@ yarn-error.log*
 # Vercel
 .vercel
 
+# Uploaded news photos (local development)
+/public/uploads/
+
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts

@@ -18,6 +18,7 @@ HAC Group est une société constituée selon le droit canadien et membre actif 
   - Secteurs d'activité détaillés
   - Stratégie et projets avec timeline interactive
   - Formulaire de contact fonctionnel (mailto)
+  - Gestion des actualités avec import de photos de couverture depuis l'espace d'administration
 - **Optimisé pour la Performance** : Images optimisées avec Next.js Image
 - **Accessibilité** : Structure sémantique et contrastes conformes aux standards
 
@@ -139,8 +140,13 @@ Le site est entièrement responsive avec les breakpoints suivants :
 
 1. Pusher le code sur GitHub/GitLab/Bitbucket
 2. Importer le projet sur [Vercel](https://vercel.com)
-3. Vercel détectera automatiquement Next.js et configurera le build
-4. Déployer
+3. Créer un stockage Vercel Blob et le connecter au projet pour configurer `BLOB_READ_WRITE_TOKEN`
+4. Vercel détectera automatiquement Next.js et configurera le build
+5. Déployer
+
+Les photos d'actualités importées depuis `/admin` sont stockées dans Vercel Blob en production. En développement local, elles sont enregistrées dans `public/uploads/actualites/`.
+
+Configurez aussi `ADMIN_PASSWORD` comme variable serveur dans les paramètres Vercel et dans `.env.local` en développement. Choisissez un mot de passe long et unique ; ne définissez pas `NEXT_PUBLIC_ADMIN_PASSWORD` et ne commitez jamais ces valeurs. La connexion crée un cookie de session HTTP-only, et les routes de publication, suppression et import de photos le vérifient côté serveur. Après avoir configuré les variables Vercel, redéployez le projet.
 
 ### Autres Plateformes
 

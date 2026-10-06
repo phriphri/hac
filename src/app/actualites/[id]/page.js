@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Calendar, Clock, User, ArrowRight, Share2, Sparkles, Building2 } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -88,6 +89,20 @@ export default async function ArticlePage({ params }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Colonne Principale : Texte de l'article */}
             <article className="lg:col-span-8">
+              {article.image && (
+                <figure className="relative mb-8 aspect-[16/9] overflow-hidden border border-brand-gray-line bg-brand-off-white">
+                  <Image
+                    src={article.image}
+                    alt={article.title}
+                    fill
+                    priority
+                    unoptimized
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                    className="object-cover"
+                  />
+                </figure>
+              )}
+
               {/* Corps de l'article */}
               <div className="space-y-6 text-brand-navy leading-relaxed text-base md:text-lg">
                 {(article.content || article.desc)
@@ -214,29 +229,43 @@ export default async function ArticlePage({ params }) {
               {otherArticles.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white border border-brand-gray-line p-6 flex flex-col justify-between transition-all hover:border-brand-teal hover:shadow-md group"
+                  className="bg-white border border-brand-gray-line flex flex-col justify-between transition-all hover:border-brand-teal hover:shadow-md group"
                 >
-                  <div>
-                    <div className="flex items-center justify-between text-xs text-brand-gray-mid mb-3">
-                      <span className="text-[10px] font-bold uppercase text-brand-teal bg-brand-teal-light px-2 py-0.5">
-                        {item.category}
-                      </span>
-                      <span>{item.date}</span>
+                  {item.image && (
+                    <div className="relative aspect-[16/9] overflow-hidden bg-brand-off-white">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        unoptimized
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
                     </div>
-                    <h3 className="text-sm font-bold text-brand-teal mb-2 group-hover:text-brand-teal-dark transition-colors line-clamp-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-brand-navy/70 line-clamp-3 leading-relaxed mb-4">
-                      {item.desc}
-                    </p>
+                  )}
+                  <div>
+                    <div className="p-6 flex-1">
+                      <div className="flex items-center justify-between text-xs text-brand-gray-mid mb-3">
+                        <span className="text-[10px] font-bold uppercase text-brand-teal bg-brand-teal-light px-2 py-0.5">
+                          {item.category}
+                        </span>
+                        <span>{item.date}</span>
+                      </div>
+                      <h3 className="text-sm font-bold text-brand-teal mb-2 group-hover:text-brand-teal-dark transition-colors line-clamp-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-brand-navy/70 line-clamp-3 leading-relaxed mb-4">
+                        {item.desc}
+                      </p>
+                      <Link
+                        href={`/actualites/${item.id}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-teal group-hover:text-brand-teal-dark transition-colors"
+                      >
+                        Lire l&apos;article
+                        <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </div>
                   </div>
-                  <Link
-                    href={`/actualites/${item.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-teal group-hover:text-brand-teal-dark transition-colors"
-                  >
-                    Lire l&apos;article
-                    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
-                  </Link>
                 </div>
               ))}
             </div>
