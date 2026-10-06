@@ -20,7 +20,8 @@ async function writeLocalData(data) {
   try {
     await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2), 'utf8');
   } catch (err) {
-    console.warn('Impossible d\'écrire en local (environnement serverless/lecture seule):', err.message);
+    console.error('Impossible d’écrire les actualités localement:', err);
+    throw new Error('Impossible d’enregistrer les actualités localement.');
   }
 }
 
@@ -36,12 +37,21 @@ export async function getActualites() {
 
       if (blob && blob.downloadUrl) {
         const res = await fetch(blob.downloadUrl, { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (Array.isArray(data)) return data;
+        if (!res.ok) {
+          throw new Error(`Lecture du blob impossible (${res.status}).`);
         }
+
+        const data = await res.json();
+        if (!Array.isArray(data)) {
+          throw new Error('Le fichier des actualités dans Vercel Blob est invalide.');
+        }
+        return data;
       }
     } catch (err) {
+      if (process.env.NODE_ENV === 'production') {
+        console.error('Erreur lecture des actualités depuis Vercel Blob:', err);
+        throw new Error('Impossible de lire les actualités depuis Vercel Blob.');
+      }
       console.warn('Erreur lecture Vercel Blob, utilisation du fallback local:', err.message);
     }
   }
@@ -71,8 +81,13 @@ export async function saveActualites(data) {
       });
     } catch (err) {
       console.error('Erreur écriture Vercel Blob:', err);
+      throw new Error('Impossible d’enregistrer les actualités dans Vercel Blob.');
     }
+  } else if (process.env.NODE_ENV === 'production') {
+    throw new Error('Le stockage Vercel Blob n’est pas configuré pour les actualités.');
   }
+
+  if (process.env.NODE_ENV === 'production') return;
 
   // Toujours tenter la mise à jour locale (utile en dev)
   await writeLocalData(data);

@@ -63,6 +63,11 @@ export async function DELETE(request) {
     }
 
     const currentActualites = await getActualites();
+    const actualiteExists = currentActualites.some((item) => item.id.toString() === id);
+    if (!actualiteExists) {
+      return NextResponse.json({ error: 'Cette actualité n’existe pas ou a déjà été supprimée.' }, { status: 404 });
+    }
+
     const updated = currentActualites.filter((item) => item.id.toString() !== id.toString());
 
     await saveActualites(updated);
@@ -70,6 +75,9 @@ export async function DELETE(request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Delete Error:', error);
-    return NextResponse.json({ error: 'Erreur lors de la suppression.' }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || 'Erreur lors de la suppression.' },
+      { status: 500 }
+    );
   }
 }

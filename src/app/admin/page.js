@@ -215,7 +215,8 @@ export default function AdminPage() {
         setNotification({ type: 'success', text: 'Article retiré avec succès.' });
         loadActualites();
       } else {
-        setNotification({ type: 'error', text: 'Impossible de supprimer cet article.' });
+        const data = await res.json();
+        setNotification({ type: 'error', text: data.error || 'Impossible de supprimer cet article.' });
       }
     } catch (err) {
       setNotification({ type: 'error', text: 'Erreur de connexion.' });
